@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NativeMail iOS for AIR Extension" default="build-extension" basedir=".">
+	
+	<property file="local.properties" />
+	<property file="build.properties" />
+	
+	<target name="clean">
+		<delete dir="${app.builddir}"/>
+		<delete dir="${app.releasedir}"/>
+		<mkdir dir="${app.builddir}"/>
+		<mkdir dir="${app.releasedir}"/>
+		<delete file="${app.rootdir}/library.swf"/>
+		<delete file="${app.rootdir}/${app.swcfilename}"/>
+	</target>
+	
+	<target name="build-extension" depends="clean">
+		<exec executable="${ACOMPC}">
+			<arg line="
+				-output ${app.builddir}/${app.swcfilename}
+				-load-config+=${app.configfile}
+				+configname=airmobile
+				-swf-version=14
+			"/>
+		</exec>
+		<copy file="${app.builddir}/${app.swcfilename}" tofile="${app.rootdir}/${app.swcfilename}"/>
+		<unzip src="${app.builddir}/${app.swcfilename}" dest="${app.rootdir}"/>
+		<delete file="${app.rootdir}/catalog.xml"/>
+		<exec executable="${ADT}">
+					<arg line="
+						-package -target ane ${app.releasedir}/iOS_MailExtension.ane ${app.extensionxmlfile} 
+						-swc ${app.swcfilename}
+						-platform iPhone-ARM library.swf libMailExtension.a
+						-platformoptions ios-platformoptions.xml
+					"/>
+		</exec>
+		<delete file="${app.rootdir}/library.swf"/>
+		<delete file="${app.rootdir}/${app.swcfilename}"/>
+	</target>
+</project>

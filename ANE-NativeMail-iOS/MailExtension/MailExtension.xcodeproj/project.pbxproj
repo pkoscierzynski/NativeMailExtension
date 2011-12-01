@@ -1,0 +1,257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AEF9D849148552CF00CB2153 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF9D848148552CF00CB2153 /* Foundation.framework */; };
+		AEF9D84F148552CF00CB2153 /* MailExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF9D84E148552CF00CB2153 /* MailExtension.m */; };
+		AEF9D8571485530B00CB2153 /* MailComposerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF9D8551485530B00CB2153 /* MailComposerHelper.h */; };
+		AEF9D8581485530B00CB2153 /* MailComposerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF9D8561485530B00CB2153 /* MailComposerHelper.m */; };
+		AEF9D85A1485532600CB2153 /* FlashRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF9D8591485532600CB2153 /* FlashRuntimeExtensions.h */; };
+		AEF9D85C148567D400CB2153 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF9D85B148567D400CB2153 /* MessageUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AEF9D845148552CF00CB2153 /* libMailExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMailExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF9D848148552CF00CB2153 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AEF9D84C148552CF00CB2153 /* MailExtension-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MailExtension-Prefix.pch"; sourceTree = "<group>"; };
+		AEF9D84D148552CF00CB2153 /* MailExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailExtension.h; sourceTree = "<group>"; };
+		AEF9D84E148552CF00CB2153 /* MailExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailExtension.m; sourceTree = "<group>"; };
+		AEF9D8551485530B00CB2153 /* MailComposerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailComposerHelper.h; sourceTree = "<group>"; };
+		AEF9D8561485530B00CB2153 /* MailComposerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailComposerHelper.m; sourceTree = "<group>"; };
+		AEF9D8591485532600CB2153 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
+		AEF9D85B148567D400CB2153 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEF9D842148552CF00CB2153 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF9D85C148567D400CB2153 /* MessageUI.framework in Frameworks */,
+				AEF9D849148552CF00CB2153 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AEF9D83A148552CF00CB2153 = {
+			isa = PBXGroup;
+			children = (
+				AEF9D8591485532600CB2153 /* FlashRuntimeExtensions.h */,
+				AEF9D84A148552CF00CB2153 /* MailExtension */,
+				AEF9D847148552CF00CB2153 /* Frameworks */,
+				AEF9D846148552CF00CB2153 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AEF9D846148552CF00CB2153 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9D845148552CF00CB2153 /* libMailExtension.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEF9D847148552CF00CB2153 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9D85B148567D400CB2153 /* MessageUI.framework */,
+				AEF9D848148552CF00CB2153 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AEF9D84A148552CF00CB2153 /* MailExtension */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9D8551485530B00CB2153 /* MailComposerHelper.h */,
+				AEF9D8561485530B00CB2153 /* MailComposerHelper.m */,
+				AEF9D84D148552CF00CB2153 /* MailExtension.h */,
+				AEF9D84E148552CF00CB2153 /* MailExtension.m */,
+				AEF9D84B148552CF00CB2153 /* Supporting Files */,
+			);
+			path = MailExtension;
+			sourceTree = "<group>";
+		};
+		AEF9D84B148552CF00CB2153 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9D84C148552CF00CB2153 /* MailExtension-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AEF9D843148552CF00CB2153 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF9D8571485530B00CB2153 /* MailComposerHelper.h in Headers */,
+				AEF9D85A1485532600CB2153 /* FlashRuntimeExtensions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AEF9D844148552CF00CB2153 /* MailExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEF9D852148552CF00CB2153 /* Build configuration list for PBXNativeTarget "MailExtension" */;
+			buildPhases = (
+				AEF9D841148552CF00CB2153 /* Sources */,
+				AEF9D842148552CF00CB2153 /* Frameworks */,
+				AEF9D843148552CF00CB2153 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MailExtension;
+			productName = MailExtension;
+			productReference = AEF9D845148552CF00CB2153 /* libMailExtension.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEF9D83C148552CF00CB2153 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Randori;
+			};
+			buildConfigurationList = AEF9D83F148552CF00CB2153 /* Build configuration list for PBXProject "MailExtension" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AEF9D83A148552CF00CB2153;
+			productRefGroup = AEF9D846148552CF00CB2153 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEF9D844148552CF00CB2153 /* MailExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEF9D841148552CF00CB2153 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF9D84F148552CF00CB2153 /* MailExtension.m in Sources */,
+				AEF9D8581485530B00CB2153 /* MailComposerHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AEF9D850148552CF00CB2153 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AEF9D851148552CF00CB2153 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AEF9D853148552CF00CB2153 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MailExtension.dst;
+				GCC_LINK_WITH_DYNAMIC_LIBRARIES = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MailExtension/MailExtension-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		AEF9D854148552CF00CB2153 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/MailExtension.dst;
+				GCC_LINK_WITH_DYNAMIC_LIBRARIES = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MailExtension/MailExtension-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEF9D83F148552CF00CB2153 /* Build configuration list for PBXProject "MailExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF9D850148552CF00CB2153 /* Debug */,
+				AEF9D851148552CF00CB2153 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEF9D852148552CF00CB2153 /* Build configuration list for PBXNativeTarget "MailExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF9D853148552CF00CB2153 /* Debug */,
+				AEF9D854148552CF00CB2153 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEF9D83C148552CF00CB2153 /* Project object */;
+}

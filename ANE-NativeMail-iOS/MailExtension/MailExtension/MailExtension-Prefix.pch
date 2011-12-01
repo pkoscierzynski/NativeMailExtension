@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MailExtension' target in the 'MailExtension' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
