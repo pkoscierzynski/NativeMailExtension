@@ -26,30 +26,30 @@ static  NSString *event_name = @"MAIL_COMPOSER_EVENT";
     
     FREDispatchStatusEventAsync(context, (uint8_t*)[event_name UTF8String], (uint8_t*)[@"WILL_SHOW_MAIL_COMPOSER" UTF8String]);
     
-
+   
+	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+	mailComposer.mailComposeDelegate = self;
     
-	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-	picker.mailComposeDelegate = self;
+    if (subject != nil)
+        [mailComposer setSubject: subject]; 
     
-	[picker setSubject: subject];    
-	[picker setMessageBody:messageBody isHTML:YES];
+    if (messageBody != nil)
+        [mailComposer setMessageBody:messageBody isHTML:YES];
     
-    if ([toRecipients rangeOfString:@"@"].location != NSNotFound)
-        [picker setToRecipients:[toRecipients componentsSeparatedByString:@","]];
+    if (toRecipients != nil && [toRecipients rangeOfString:@"@"].location != NSNotFound)
+        [mailComposer setToRecipients:[toRecipients componentsSeparatedByString:@","]];
     
-    if ([ccRecipients rangeOfString:@"@"].location != NSNotFound)
-        [picker setCcRecipients:[ccRecipients componentsSeparatedByString:@","]];
+    if (ccRecipients != nil && [ccRecipients rangeOfString:@"@"].location != NSNotFound)
+        [mailComposer setCcRecipients:[ccRecipients componentsSeparatedByString:@","]];
     
-    if ([bccRecipients rangeOfString:@"@"].location != NSNotFound)
-        [picker setBccRecipients:[bccRecipients componentsSeparatedByString:@","]];
+    if (bccRecipients != nil && [bccRecipients rangeOfString:@"@"].location != NSNotFound)
+        [mailComposer setBccRecipients:[bccRecipients componentsSeparatedByString:@","]];
+    
     
     
     //Add attachments (if any)
-    if (!attachmentsData) {
-        //No attachments found
-    }
-    else {
-        
+    if (attachmentsData) {      
+      
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *filePath;
@@ -91,7 +91,7 @@ static  NSString *event_name = @"MAIL_COMPOSER_EVENT";
                 NSData *fileData = [[NSData alloc] initWithContentsOfFile:filePath];
         
                 if (fileData) {
-                    [picker addAttachmentData: fileData mimeType:fileMimeType fileName:fileAttachName];            
+                    [mailComposer addAttachmentData: fileData mimeType:fileMimeType fileName:fileAttachName];            
                 }
         
                 [fileData release];
@@ -100,11 +100,12 @@ static  NSString *event_name = @"MAIL_COMPOSER_EVENT";
         }
     }
     
-    
+        
     //show mail composer
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:picker animated:YES];
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:mailComposer animated:YES];
+   
+	[mailComposer release];
 
-	[picker release];
 }
 
 // Dismisses the email composition interface when users tap Cancel or Send.

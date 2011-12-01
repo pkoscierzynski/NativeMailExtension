@@ -69,6 +69,14 @@ FREObject PKSendMailWithOptions(FREContext ctx, void* funcData, uint32_t argc, F
         return NULL;
     }
     
+    
+    if(argc<3) {
+        
+        FREDispatchStatusEventAsync(ctx, (uint8_t*)[event_name UTF8String], (uint8_t*)[@"NOT_ENOUGH_PARAMETERS_PROVIDED" UTF8String]);
+        
+        return NULL;
+    }
+    
     //Subject
     uint32_t subjectLength;
     const uint8_t *subjectCString;
@@ -85,16 +93,14 @@ FREObject PKSendMailWithOptions(FREContext ctx, void* funcData, uint32_t argc, F
     uint32_t messageBodyLength;
     const uint8_t *messageBodyCString;
     
-    NSMutableString *attachmentsString;
-
-    NSString *subjectString;
-    NSString *toRecipientsString;
-    NSString *ccRecipientsString;
-    NSString *bccRecipientsString;
-    NSString *messageBodyString;
+    NSMutableString *attachmentsString = nil;
+    NSString *subjectString = nil;
+    NSString *toRecipientsString = nil;
+    NSString *ccRecipientsString = nil;
+    NSString *bccRecipientsString = nil;
+    NSString *messageBodyString = nil;
     
     //Create NSStrings from CStrings
-    //Turn our actionscrpt code into native code.
     if (FRE_OK == FREGetObjectAsUTF8(argv[0], &subjectLength, &subjectCString)) {
         subjectString = [NSString stringWithUTF8String:(char*)subjectCString];
     }
@@ -107,51 +113,47 @@ FREObject PKSendMailWithOptions(FREContext ctx, void* funcData, uint32_t argc, F
         toRecipientsString = [NSString stringWithUTF8String:(char*)toRecipientsCString];
     }
     
-    if (FRE_OK == FREGetObjectAsUTF8(argv[3], &ccRecipientsLength, &ccRecipientsCString)) {
+    if (argc >= 4 && (FRE_OK == FREGetObjectAsUTF8(argv[3], &ccRecipientsLength, &ccRecipientsCString))) {
         ccRecipientsString = [NSString stringWithUTF8String:(char*)ccRecipientsCString];
     }
     
-    if (FRE_OK == FREGetObjectAsUTF8(argv[4], &bccRecipientsLength, &bccRecipientsCString)) {
+    if (argc >= 5 && (FRE_OK == FREGetObjectAsUTF8(argv[4], &bccRecipientsLength, &bccRecipientsCString))) {
         bccRecipientsString = [NSString stringWithUTF8String:(char*)bccRecipientsCString];
     }
     
-    //argv[5] is a an array containing strings
-    //["Default.png|bundle|image/png|Application splash screen.png","Example file.dat|documents|text/xml|A file saved in Adobe AIR iOS app.txt"]
-    uint32_t attachmentsArrayLength;
+     uint32_t attachmentsArrayLength = 0;
     
-    BOOL validAttachmentsData = YES;
-    if (FRE_OK != FREGetArrayLength(argv[5], &attachmentsArrayLength)) {
+
+    //argv[5] is a an array of strings
+    if (argc >= 6 && (FRE_OK != FREGetArrayLength(argv[5], &attachmentsArrayLength))) {
         //No valid array of attachments provided.
-        validAttachmentsData = NO;
     }
     
-    //parse attachments array
-    if (validAttachmentsData) {
-        attachmentsString = [[NSMutableString alloc ] init];
+    if (attachmentsArrayLength >= 1) {
 
+        attachmentsString = [[NSMutableString alloc ] init];
         uint32_t attachmentEntryLength;
         const uint8_t *attachmentEntryCString;
     
-        //convert attachments array to string
         for (int i = 0; i < attachmentsArrayLength; i++) {
+            
             FREObject arrayElement;
             FREGetArrayElementAt(argv[5], i, &arrayElement);
             FREGetObjectAsUTF8(arrayElement, &attachmentEntryLength, &attachmentEntryCString);
         
             [attachmentsString appendString:[NSString stringWithUTF8String:(char*)attachmentEntryCString]];
         
-            if (i<attachmentsArrayLength-1)
+            if (i<(attachmentsArrayLength-1))
                 [attachmentsString appendString:attachmentsSeparator];
         }
-    }//end attachments parsing
-    
+    }    
     
     if (mailComposerHelper) {
 	}
     else {
         mailComposerHelper = [[MailComposerHelper alloc] init];
     }
-    
+
     [mailComposerHelper setContext:ctx];
     [mailComposerHelper sendMailWithSubject:subjectString 
                                toRecipients:toRecipientsString 
@@ -160,8 +162,9 @@ FREObject PKSendMailWithOptions(FREContext ctx, void* funcData, uint32_t argc, F
                                 messageBody:messageBodyString 
                             attachmentsData:attachmentsString];
     
+    if (attachmentsString != nil)
+        [attachmentsString release];
     
-    [attachmentsString release];
     
     return NULL;    
 }
@@ -204,16 +207,12 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx,
 // ContextFinalizer().
 
 void ContextFinalizer(FREContext ctx) {
-    
-    NSLog(@"Entering ContextFinalizer()");
-    
+
 	[mailComposerHelper setContext:NULL];
 	[mailComposerHelper release];
 	mailComposerHelper = nil;
 
-    NSLog(@"Exiting ContextFinalizer()");
-    
-	return;
+    return;
 }
 
 // ExtInitializer()
@@ -223,23 +222,17 @@ void ContextFinalizer(FREContext ctx) {
 void ExtInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, 
                     FREContextFinalizer* ctxFinalizerToSet) {
     
-    NSLog(@"Entering ExtInitializer()");
-    
     *extDataToSet = NULL;
     *ctxInitializerToSet = &ContextInitializer;
     *ctxFinalizerToSet = &ContextFinalizer;
-    
-    NSLog(@"Exiting ExtInitializer()");
+
 }
 
 // ExtFinalizer()
 //
 // The extension finalizer is called when the runtime unloads the extension. However, it is not always called.
 void ExtFinalizer(void* extData) {
-    
-    NSLog(@"Entering ExtFinalizer()");
 
-    NSLog(@"Exiting ExtFinalizer()");
     return;
 }
 
