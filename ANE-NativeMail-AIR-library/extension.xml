@@ -5,8 +5,8 @@
         <platform name="iPhone-ARM">
             <applicationDeployment>
                 <nativeLibrary>libMailExtension.a</nativeLibrary>
-                <initializer>ExtInitializer</initializer>
-                <finalizer>ExtFinalizer</finalizer>
+                <initializer>RIANEMailExtensionInitializer</initializer>
+                <finalizer>RIANEMailExtensionFinalizer</finalizer>
             </applicationDeployment>
         </platform>
     </platforms>

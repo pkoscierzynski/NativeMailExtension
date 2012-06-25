@@ -207,7 +207,6 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx,
 // ContextFinalizer().
 
 void ContextFinalizer(FREContext ctx) {
-
 	[mailComposerHelper setContext:NULL];
 	[mailComposerHelper release];
 	mailComposerHelper = nil;
@@ -215,24 +214,14 @@ void ContextFinalizer(FREContext ctx) {
     return;
 }
 
-// ExtInitializer()
-//
-// The extension initializer is called the first time the ActionScript side of the extension
-// calls ExtensionContext.createExtensionContext() for any context.
-void ExtInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, 
+void RIANEMailExtensionInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, 
                     FREContextFinalizer* ctxFinalizerToSet) {
-    
     *extDataToSet = NULL;
     *ctxInitializerToSet = &ContextInitializer;
     *ctxFinalizerToSet = &ContextFinalizer;
-
 }
 
-// ExtFinalizer()
-//
-// The extension finalizer is called when the runtime unloads the extension. However, it is not always called.
-void ExtFinalizer(void* extData) {
-
+void RIANEMailExtensionFinalizer(void* extData) {
     return;
 }
 

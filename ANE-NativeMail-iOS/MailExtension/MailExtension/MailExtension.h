@@ -24,8 +24,8 @@ FREObject PKSendMailWithOptions(FREContext ctx, void* funcData, uint32_t argc, F
 void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, 
 						uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet);
 void ContextFinalizer(FREContext ctx);
-void ExtInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, 
+void RIANEMailExtensionInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, 
                     FREContextFinalizer* ctxFinalizerToSet);
-void ExtFinalizer(void* extData);
+void RIANEMailExtensionFinalizer(void* extData);
 
 @end

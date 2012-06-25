@@ -1,7 +1,10 @@
 <platform xmlns="http://ns.adobe.com/air/extension/3.1">
+    <description>In-app mail composer for Adobe AIR iOS apps</description> 
+    <copyright>Piotr Koscierzynski, 2011-2012</copyright> 
     <sdkVersion>5.0</sdkVersion>
     <linkerOptions>
-	    <!-- to use the MessageUI framework -->
+        <option>-w</option>
+        <option>-ios_version_min 4.0</option>
         <option>-framework MessageUI</option>
     </linkerOptions>
 </platform>
