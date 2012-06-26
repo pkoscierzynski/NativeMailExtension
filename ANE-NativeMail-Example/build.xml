@@ -48,10 +48,11 @@
 						-provisioning-profile ${build.mobileprofile}
 						-storetype ${build.storetype}
 						-keystore ${build.keystore}
-						-storepass PASSWORD
+						-storepass YOUR_P12_PASSWORD
 						${app.releasedir}/${build.name}
 						${app.descriptor}
 						${build.swfname}
+						-platformsdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/
 						-extdir extensions
 						-C ${app.builddir} Default.png"/>
 		</exec>
