@@ -36,8 +36,8 @@ package pl.randori.air.nativeextensions.ios
 		 * @param toRecipients To: recipients in format: "mail@example.com,mail2@example.com"
 		 * @param ccRecipients Cc: recipients in format: "mail@example.com,mail2@example.com"
 		 * @param bccRecipients Bcc: recipients in format: "mail@example.com,mail2@example.com"
-		 * @param attachmentsData Attachments in format: ['filename|bundle|mimetype|name of file to display in attachment']
-		 * example: ["Default.png|bundle|image/png|Application splash screen.png","Example file.dat|documents|text/xml|A file saved in Adobe AIR iOS app.txt"]
+		 * @param attachmentsData Attachments in format: ['File.nativePath|native|mimetype|name of file to display in attachment']
+		 * example: [file.nativePath+"|native|text/xml|A file saved in Adobe AIR iOS app.txt"]
 		 */
 		public function sendMail(subject:String, messageBody:String, toRecipients:String,
 								ccRecipients:String = '', bccRecipients:String = '', attachmentsData:Array = null):void {
